@@ -1,0 +1,2238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Trust - Building Digital Solutions</title>
+    <style>
+        :root {
+  /* Light Blue & White Color Scheme */
+  --color-white: #FFFFFF;
+  --color-light-blue-bg: #F0F7FF;
+  --color-very-light-blue: #E3F2FD;
+  --color-bright-blue: #3B82F6;
+  --color-dark-blue: #1565C0;
+  --color-dark-blue-text: #1D4ED8;
+  --color-light-gray: #F5F7FA;
+  --color-light-gray-alt: #F3F4F6;
+  --color-text-dark: #1F2937;
+  --color-text-light: #78849E;
+  --color-border-light: #E8EEF5;
+  --color-border-gray: #E5E7EB;
+  --color-red-error: #EF4444;
+  --color-red-light: #FEE2E2;
+
+  /* RGB versions for opacity control */
+  --color-bright-blue-rgb: 59, 130, 246;
+  --color-dark-blue-rgb: 21, 101, 192;
+  --color-text-dark-rgb: 31, 41, 55;
+  --color-red-rgb: 239, 68, 68;
+  --color-light-blue-rgb: 227, 242, 253;
+
+  /* Semantic Color Tokens (Light Blue & White) */
+  --color-background: var(--color-light-blue-bg);
+  --color-surface: var(--color-white);
+  --color-text: var(--color-text-dark);
+  --color-text-secondary: var(--color-text-light);
+  --color-primary: var(--color-bright-blue);
+  --color-primary-hover: #2563EB;
+  --color-primary-active: #1D4ED8;
+  --color-secondary: var(--color-very-light-blue);
+  --color-secondary-hover: rgba(var(--color-bright-blue-rgb), 0.15);
+  --color-secondary-active: rgba(var(--color-bright-blue-rgb), 0.25);
+  --color-border: var(--color-border-light);
+  --color-btn-primary-text: var(--color-white);
+  --color-card-border: var(--color-border-light);
+  --color-card-border-inner: var(--color-border-gray);
+  --color-error: var(--color-red-error);
+  --color-success: var(--color-bright-blue);
+  --color-warning: #F59E0B;
+  --color-info: var(--color-bright-blue);
+  --color-focus-ring: rgba(var(--color-bright-blue-rgb), 0.3);
+  --color-select-caret: rgba(var(--color-text-dark-rgb), 0.8);
+
+  /* Common style patterns */
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+  --status-bg-opacity: 0.1;
+  --status-border-opacity: 0.2;
+
+  /* RGB versions for opacity control */
+  --color-success-rgb: var(--color-bright-blue-rgb);
+  --color-error-rgb: var(--color-red-rgb);
+  --color-warning-rgb: 245, 158, 11;
+  --color-info-rgb: var(--color-bright-blue-rgb);
+
+  /* Typography */
+  --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, monospace;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 30px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 550;
+  --font-weight-bold: 600;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --letter-spacing-tight: -0.01em;
+
+  /* Spacing */
+  --space-0: 0;
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-base: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04),
+    0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04),
+    0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+
+  /* Animation */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+}
+
+
+
+@font-face {
+  font-family: 'FKGroteskNeue';
+  src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2')
+    format('woff2');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family-base);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: var(--line-height-normal);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Navigation */
+.navbar {
+    background-color: var(--color-white);
+    padding: var(--space-16) var(--space-32);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.navbar-container {
+    max-width: var(--container-xl);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-dark-blue);
+    text-decoration: none;
+}
+
+.navbar-links {
+    display: flex;
+    gap: var(--space-24);
+    align-items: center;
+}
+
+.navbar-links a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.navbar-links a:hover {
+    color: var(--color-primary);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, var(--color-very-light-blue) 0%, var(--color-white) 100%);
+    padding: 100px var(--space-32);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 52px;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-24);
+    color: var(--color-dark-blue);
+}
+
+.hero p {
+    font-size: var(--font-size-xl);
+    color: var(--color-text-light);
+    margin-bottom: var(--space-32);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-12) var(--space-24);
+    border-radius: var(--radius-base);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    transition: all var(--duration-normal) var(--ease-standard);
+    border: none;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: var(--color-bright-blue);
+    color: white;
+    font-weight: var(--font-weight-semibold);
+    padding: var(--space-16) var(--space-32);
+}
+
+.btn-primary:hover {
+    background: var(--color-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+}
+
+.btn-secondary {
+    background: var(--color-very-light-blue);
+    color: var(--color-dark-blue);
+    border: 1px solid var(--color-border-light);
+}
+
+.btn-secondary:hover {
+    background: var(--color-secondary-hover);
+    border-color: var(--color-bright-blue);
+}
+
+/* About Us Section */
+.about-section {
+    padding: 80px var(--space-32);
+    background: var(--color-white);
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: var(--container-xl);
+    margin: 0 auto;
+}
+
+.about-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+.about-text h2 {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-24);
+    color: var(--color-dark-blue);
+}
+
+.about-text p {
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    margin-bottom: var(--space-16);
+    font-size: var(--font-size-lg);
+}
+
+/* Why Choose Us Section */
+.why-choose-section {
+    padding: 80px var(--space-32);
+    background: var(--color-light-blue-bg);
+}
+
+.why-choose-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-32);
+    max-width: var(--container-xl);
+    margin: 0 auto;
+    margin-top: 48px;
+}
+
+.why-choose-card {
+    background: var(--color-white);
+    padding: var(--space-32);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--color-border-light);
+    transition: all var(--duration-normal) var(--ease-standard);
+}
+
+.why-choose-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.why-choose-icon {
+    font-size: 48px;
+    margin-bottom: var(--space-20);
+}
+
+.why-choose-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-12);
+    color: var(--color-dark-blue);
+}
+
+.why-choose-description {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+/* Section Styles */
+.section {
+    padding: 60px var(--space-32);
+}
+
+.section-title {
+    text-align: center;
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-16);
+    color: var(--color-dark-blue);
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: 48px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container {
+    max-width: var(--container-xl);
+    margin: 0 auto;
+}
+
+/* Carousel Wrapper */
+.carousel-wrapper {
+    position: relative;
+    margin-top: var(--space-32);
+    padding: 0 60px;
+}
+
+.carousel-container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    padding: 20px 0;
+    width: 100%;
+    scrollbar-width: none;
+}
+
+.carousel-container::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-item {
+    flex: 0 0 320px;
+    min-width: 320px;
+    height: 420px;
+    background: var(--color-white);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.carousel-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--color-bright-blue);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-button:hover {
+    background: var(--color-primary-hover);
+}
+
+.carousel-button.left {
+    left: 0;
+}
+
+.carousel-button.right {
+    right: 0;
+}
+
+/* Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-24);
+    margin-top: var(--space-32);
+}
+
+.project-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: all var(--duration-normal) var(--ease-standard);
+    border: 1px solid var(--color-border-light);
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.project-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.project-content {
+    padding: var(--space-24);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.carousel-item .project-image {
+    height: 200px;
+}
+
+.carousel-item .project-content {
+    padding: var(--space-20);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.carousel-item .project-title {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-10);
+}
+
+.carousel-item .project-description {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-12);
+    line-height: 1.5;
+}
+
+.project-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--space-12);
+    color: var(--color-text);
+}
+
+.project-description {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-16);
+    line-height: 1.6;
+    flex: 1;
+}
+
+/* Clients Grid */
+.clients-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-24);
+    margin-top: var(--space-32);
+}
+
+.carousel-item.client-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 320px;
+}
+
+.carousel-item .client-description {
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+    margin-bottom: var(--space-16);
+    flex-grow: 1;
+}
+
+.client-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-32);
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--color-border-light);
+    transition: all var(--duration-normal) var(--ease-standard);
+}
+
+.client-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+}
+
+.client-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto var(--space-20);
+    object-fit: cover;
+    border: 3px solid var(--color-bright-blue);
+}
+
+.client-description {
+    font-style: italic;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-20);
+    line-height: 1.6;
+    position: relative;
+    padding: 0 var(--space-16);
+}
+
+.client-description::before {
+    content: '"';
+    font-size: 48px;
+    color: var(--color-bright-blue);
+    position: absolute;
+    top: -20px;
+    left: -10px;
+    opacity: 0.2;
+}
+
+.client-name {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+    margin-bottom: var(--space-4);
+}
+
+.client-designation {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+/* Contact Form */
+.contact-section {
+    background: var(--color-light-blue-bg);
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--color-white);
+    padding: var(--space-32);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--color-border-light);
+}
+
+.form-group {
+    margin-bottom: var(--space-20);
+}
+
+.form-label {
+    display: block;
+    margin-bottom: var(--space-8);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+}
+
+.form-control {
+    width: 100%;
+    padding: var(--space-12);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-base);
+    font-size: var(--font-size-base);
+    font-family: var(--font-family-base);
+    background: var(--color-white);
+    color: var(--color-text);
+    transition: border-color var(--duration-fast) var(--ease-standard);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--color-bright-blue);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-control.error {
+    border-color: var(--color-error);
+}
+
+.error-message {
+    color: var(--color-error);
+    font-size: var(--font-size-sm);
+    margin-top: var(--space-4);
+}
+
+/* Newsletter */
+.newsletter-section {
+    background: var(--color-very-light-blue);
+    text-align: center;
+}
+
+.newsletter-form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    gap: var(--space-12);
+}
+
+.newsletter-form input {
+    flex: 1;
+}
+
+/* Admin Panel */
+.admin-panel {
+    padding: var(--space-32);
+    min-height: 100vh;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-32);
+}
+
+.tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: var(--space-32);
+    flex-wrap: wrap;
+}
+
+.tab {
+    padding: var(--space-12) var(--space-24);
+    background: var(--color-very-light-blue);
+    border: none;
+    border-radius: var(--radius-base) var(--radius-base) 0 0;
+    cursor: pointer;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-dark-blue);
+    transition: all var(--duration-fast) var(--ease-standard);
+    margin-bottom: 0;
+    margin-right: var(--space-4);
+}
+
+.tab.active {
+    background: var(--color-bright-blue);
+    color: var(--color-white);
+}
+
+.tab:hover {
+    background: var(--color-primary-hover);
+    color: var(--color-white);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.admin-form {
+    background: var(--color-white);
+    padding: var(--space-24);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-32);
+    border: 1px solid var(--color-border-light);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-16);
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Tables */
+.data-table {
+    width: 100%;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--color-border-light);
+}
+
+.data-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+    padding: var(--space-16);
+    text-align: left;
+    border-bottom: 1px solid var(--color-border-gray);
+}
+
+.data-table th {
+    background: var(--color-very-light-blue);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-dark-blue);
+}
+
+.data-table tr:hover {
+    background: var(--color-light-blue-bg);
+}
+
+.btn-delete {
+    background: var(--color-error);
+    color: white;
+    padding: var(--space-6) var(--space-12);
+    border-radius: var(--radius-sm);
+    border: none;
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    transition: opacity var(--duration-fast) var(--ease-standard);
+}
+
+.btn-delete:hover {
+    opacity: 0.8;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 48px var(--space-24);
+    color: var(--color-text-secondary);
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--color-white);
+    padding: var(--space-16) var(--space-24);
+    border-radius: var(--radius-base);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--color-border-light);
+    z-index: 1000;
+    display: none;
+}
+
+.toast.show {
+    display: block;
+}
+
+.toast.success {
+    border-left: 4px solid var(--color-bright-blue);
+}
+
+.toast.error {
+    border-left: 4px solid var(--color-error);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Image Cropping Styles */
+.crop-area {
+    background: var(--color-light-blue-bg);
+    padding: var(--space-20);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-20);
+    border: 1px solid var(--color-border-light);
+}
+
+.crop-controls {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-8);
+    margin-top: var(--space-8);
+}
+
+.canvas-container {
+    background: var(--color-white);
+    border: 2px solid var(--color-bright-blue);
+    border-radius: var(--radius-base);
+    display: inline-block;
+    position: relative;
+    cursor: crosshair;
+    max-width: 100%;
+    overflow: auto;
+}
+
+.canvas-container canvas {
+    display: block;
+    max-width: 100%;
+}
+
+.cropped-preview {
+    background: var(--color-light-blue-bg);
+    padding: var(--space-20);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-20);
+    border: 1px solid var(--color-border-light);
+    text-align: center;
+}
+
+.cropped-preview img {
+    margin-top: var(--space-12);
+    box-shadow: var(--shadow-md);
+}
+
+
+
+/* Footer */
+.footer {
+    background: var(--color-dark-blue);
+    padding: var(--space-32);
+    text-align: center;
+    border-top: none;
+    color: var(--color-white);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 32px;
+    }
+    
+    .navbar-links {
+        gap: var(--space-16);
+        font-size: var(--font-size-sm);
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-32);
+    }
+    
+    .why-choose-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .projects-grid,
+    .clients-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .tabs {
+        overflow-x: auto;
+    }
+    
+    .carousel-wrapper {
+        padding: 0 40px;
+    }
+    
+    .carousel-button.left {
+        left: -5px;
+    }
+    
+    .carousel-button.right {
+        right: -5px;
+    }
+    
+    .carousel-item {
+        flex: 0 0 280px;
+        min-width: 280px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .projects-grid,
+    .clients-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Landing Page -->
+    <div id="landingPage">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="navbar-container">
+                <a href="#" class="navbar-brand">
+                    <svg width="45" height="45" viewBox="0 0 45 45" style="display: inline-block; vertical-align: middle; margin-right: 10px;">
+                        <circle cx="22.5" cy="22.5" r="22.5" fill="#3B82F6"/>
+                        <text x="22.5" y="30" font-family="var(--font-family-base)" font-size="18" font-weight="700" fill="white" text-anchor="middle">RT</text>
+                    </svg>
+                    <span style="vertical-align: middle;">Real Trust</span>
+                </a>
+                <div class="navbar-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#clients">Testimonials</a>
+                    <a href="#contact">Contact</a>
+                    <button class="btn btn-primary" onclick="showAdmin()">Admin</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section id="home" class="hero" style="background: linear-gradient(135deg, #E3F2FD 0%, #F0F7FF 100%);">
+            <div class="hero-content">
+                <h1>Welcome to Our Services</h1>
+                <p>Building Digital Solutions for Tomorrow</p>
+                <button class="btn btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">Explore Our Work</button>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="about-section">
+            <div class="about-content">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop" alt="Our Team" class="about-image">
+                <div class="about-text">
+                    <h2>About Us</h2>
+                    <p>We are a team of passionate professionals dedicated to delivering innovative digital solutions that drive business growth and exceed expectations. With years of experience in the industry, we have successfully helped numerous clients transform their visions into reality.</p>
+                    <p>Our expertise spans across web development, mobile applications, cloud solutions, and enterprise software. We believe in combining cutting-edge technology with creative design to build products that are not only functional but also delightful to use.</p>
+                    <p>At the core of our philosophy is a commitment to quality, innovation, and customer satisfaction. We work closely with our clients to understand their unique needs and deliver tailored solutions that solve real business challenges.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="why-choose-section">
+            <div class="container">
+                <h2 class="section-title">Why Choose Us</h2>
+                <p class="section-subtitle">Discover what sets us apart from the competition</p>
+                <div class="why-choose-grid">
+                    <div class="why-choose-card">
+                        <div class="why-choose-icon">✨</div>
+                        <h3 class="why-choose-title">Innovation</h3>
+                        <p class="why-choose-description">Cutting-edge technology and creative solutions tailored to your business needs</p>
+                    </div>
+                    <div class="why-choose-card">
+                        <div class="why-choose-icon">🎯</div>
+                        <h3 class="why-choose-title">Quality</h3>
+                        <p class="why-choose-description">Rigorous testing and quality assurance ensuring high-performance applications</p>
+                    </div>
+                    <div class="why-choose-card">
+                        <div class="why-choose-icon">💼</div>
+                        <h3 class="why-choose-title">Support</h3>
+                        <p class="why-choose-description">24/7 dedicated support and maintenance for all your digital solutions</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section" style="background: var(--color-white);">
+            <div class="container">
+                <h2 class="section-title">Our Projects</h2>
+                <p class="section-subtitle">Discover our portfolio of innovative solutions that drive results</p>
+                <div class="carousel-wrapper">
+                    <button class="carousel-button left" onclick="scrollCarousel('projectsCarousel', -1)">❮</button>
+                    <div class="carousel-container" id="projectsCarousel"></div>
+                    <button class="carousel-button right" onclick="scrollCarousel('projectsCarousel', 1)">❯</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials/Happy Clients Section -->
+        <section id="clients" class="section" style="background: var(--color-light-blue-bg);">
+            <div class="container">
+                <h2 class="section-title">Happy Clients</h2>
+                <p class="section-subtitle">What our clients say about working with us</p>
+                <div class="carousel-wrapper">
+                    <button class="carousel-button left" onclick="scrollCarousel('clientsCarousel', -1)">❮</button>
+                    <div class="carousel-container" id="clientsCarousel"></div>
+                    <button class="carousel-button right" onclick="scrollCarousel('clientsCarousel', 1)">❯</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Have a project in mind? Let's talk about it</p>
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label class="form-label">Full Name *</label>
+                        <input type="text" name="name" class="form-control" required>
+                        <span class="error-message" id="nameError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Address *</label>
+                        <input type="email" name="email" class="form-control" required>
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Mobile Number *</label>
+                        <input type="tel" name="mobile" class="form-control" required>
+                        <span class="error-message" id="mobileError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">City *</label>
+                        <input type="text" name="city" class="form-control" required>
+                        <span class="error-message" id="cityError"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Submit</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="section newsletter-section">
+            <div class="container">
+                <h2 class="section-title">Subscribe to Our Newsletter</h2>
+                <p class="section-subtitle">Stay updated with our latest projects and insights</p>
+                <form id="newsletterForm" class="newsletter-form">
+                    <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div style="margin-bottom: 16px;">
+                <svg width="40" height="40" viewBox="0 0 40 40" style="display: inline-block; vertical-align: middle; margin-right: 8px;">
+                    <circle cx="20" cy="20" r="20" fill="#3B82F6"/>
+                    <text x="20" y="26.5" font-family="var(--font-family-base)" font-size="16" font-weight="700" fill="white" text-anchor="middle">RT</text>
+                </svg>
+                <span style="font-size: 18px; font-weight: 600; vertical-align: middle;">Real Trust</span>
+            </div>
+            <p style="margin-top: 12px; opacity: 0.9;">Building Digital Solutions for Tomorrow</p>
+            <p style="margin-top: 16px; opacity: 0.8;">&copy; 2025 Real Trust. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Admin Panel -->
+    <div id="adminPanel" class="admin-panel hidden">
+        <div class="container">
+            <div class="admin-header">
+                <h1>Admin Panel</h1>
+                <button class="btn btn-secondary" onclick="showLanding()">Back to Landing Page</button>
+            </div>
+
+            <!-- Tabs -->
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('projects')">Projects Management</button>
+                <button class="tab" onclick="showTab('clients')">Clients Management</button>
+                <button class="tab" onclick="showTab('contacts')">Contact Responses</button>
+                <button class="tab" onclick="showTab('newsletter')">Newsletter Subscriptions</button>
+            </div>
+
+            <!-- Projects Tab -->
+            <div id="projectsTab" class="tab-content active">
+                <form id="addProjectForm" class="admin-form">
+                    <h3 style="margin-bottom: var(--space-20);">Add New Project</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Project Image URL</label>
+                            <input type="url" id="projectImageUrl" class="form-control" required>
+                        </div>
+                        <div class="form-group" style="display: flex; align-items: flex-end;">
+                            <button type="button" class="btn btn-primary" onclick="loadProjectImage()" style="width: 100%;">Load Image</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Image Cropping Area -->
+                    <div id="projectCropArea" class="crop-area" style="display: none;">
+                        <div style="margin-bottom: var(--space-16);">
+                            <label class="form-label">Crop Your Image</label>
+                            <div class="crop-controls">
+                                <select id="projectAspectRatio" class="form-control" style="width: auto; display: inline-block; margin-right: var(--space-8);" onchange="changeProjectAspectRatio()">
+                                    <option value="free">Free</option>
+                                    <option value="1">1:1 (Square)</option>
+                                    <option value="1.333">4:3 (Landscape)</option>
+                                    <option value="1.778">16:9 (Widescreen)</option>
+                                </select>
+                                <button type="button" class="btn btn-secondary" onclick="zoomProjectImage(1.1)" style="padding: var(--space-8) var(--space-12);">Zoom In (+)</button>
+                                <button type="button" class="btn btn-secondary" onclick="zoomProjectImage(0.9)" style="padding: var(--space-8) var(--space-12); margin-left: var(--space-4);">Zoom Out (-)</button>
+                                <button type="button" class="btn btn-secondary" onclick="rotateProjectImage()" style="padding: var(--space-8) var(--space-12); margin-left: var(--space-8);">Rotate 90°</button>
+                            </div>
+                        </div>
+                        <div class="canvas-container">
+                            <canvas id="projectCanvas"></canvas>
+                        </div>
+                        <div style="margin-top: var(--space-12); display: flex; gap: var(--space-8);">
+                            <button type="button" class="btn btn-primary" onclick="cropProjectImage()">Crop Image</button>
+                            <button type="button" class="btn btn-secondary" onclick="cancelProjectCrop()">Cancel</button>
+                            <span id="projectCropDimensions" style="margin-left: var(--space-16); align-self: center; color: var(--color-text-secondary);"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Cropped Preview -->
+                    <div id="projectCroppedPreview" class="cropped-preview" style="display: none;">
+                        <label class="form-label">Cropped Image Preview</label>
+                        <img id="projectCroppedImg" style="max-width: 200px; max-height: 200px; border-radius: var(--radius-base); border: 1px solid var(--color-border-light);">
+                    </div>
+                    
+                    <div class="form-row" style="margin-top: var(--space-20);">
+                        <div class="form-group">
+                            <label class="form-label">Project Name</label>
+                            <input type="text" name="name" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Project Description</label>
+                        <textarea name="description" class="form-control" required></textarea>
+                    </div>
+                    <input type="hidden" name="image" id="projectCroppedData">
+                    <button type="submit" class="btn btn-primary">Add Project</button>
+                </form>
+                <div class="data-table" id="projectsTable"></div>
+            </div>
+
+            <!-- Clients Tab -->
+            <div id="clientsTab" class="tab-content">
+                <form id="addClientForm" class="admin-form">
+                    <h3 style="margin-bottom: var(--space-20);">Add New Client</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Client Image URL</label>
+                            <input type="url" id="clientImageUrl" class="form-control" required>
+                        </div>
+                        <div class="form-group" style="display: flex; align-items: flex-end;">
+                            <button type="button" class="btn btn-primary" onclick="loadClientImage()" style="width: 100%;">Load Image</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Image Cropping Area -->
+                    <div id="clientCropArea" class="crop-area" style="display: none;">
+                        <div style="margin-bottom: var(--space-16);">
+                            <label class="form-label">Crop Your Image</label>
+                            <div class="crop-controls">
+                                <select id="clientAspectRatio" class="form-control" style="width: auto; display: inline-block; margin-right: var(--space-8);" onchange="changeClientAspectRatio()">
+                                    <option value="free">Free</option>
+                                    <option value="1">1:1 (Square)</option>
+                                    <option value="1.333">4:3 (Landscape)</option>
+                                    <option value="1.778">16:9 (Widescreen)</option>
+                                </select>
+                                <button type="button" class="btn btn-secondary" onclick="zoomClientImage(1.1)" style="padding: var(--space-8) var(--space-12);">Zoom In (+)</button>
+                                <button type="button" class="btn btn-secondary" onclick="zoomClientImage(0.9)" style="padding: var(--space-8) var(--space-12); margin-left: var(--space-4);">Zoom Out (-)</button>
+                                <button type="button" class="btn btn-secondary" onclick="rotateClientImage()" style="padding: var(--space-8) var(--space-12); margin-left: var(--space-8);">Rotate 90°</button>
+                            </div>
+                        </div>
+                        <div class="canvas-container">
+                            <canvas id="clientCanvas"></canvas>
+                        </div>
+                        <div style="margin-top: var(--space-12); display: flex; gap: var(--space-8);">
+                            <button type="button" class="btn btn-primary" onclick="cropClientImage()">Crop Image</button>
+                            <button type="button" class="btn btn-secondary" onclick="cancelClientCrop()">Cancel</button>
+                            <span id="clientCropDimensions" style="margin-left: var(--space-16); align-self: center; color: var(--color-text-secondary);"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Cropped Preview -->
+                    <div id="clientCroppedPreview" class="cropped-preview" style="display: none;">
+                        <label class="form-label">Cropped Image Preview</label>
+                        <img id="clientCroppedImg" style="max-width: 150px; max-height: 150px; border-radius: 50%; border: 3px solid var(--color-bright-blue);">
+                    </div>
+                    
+                    <div class="form-row" style="margin-top: var(--space-20);">
+                        <div class="form-group">
+                            <label class="form-label">Client Name</label>
+                            <input type="text" name="name" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Client Testimonial</label>
+                        <textarea name="description" class="form-control" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Client Designation</label>
+                        <input type="text" name="designation" class="form-control" required>
+                    </div>
+                    <input type="hidden" name="image" id="clientCroppedData">
+                    <button type="submit" class="btn btn-primary">Add Client</button>
+                </form>
+                <div class="data-table" id="clientsTable"></div>
+            </div>
+
+            <!-- Contacts Tab -->
+            <div id="contactsTab" class="tab-content">
+                <h3 style="margin-bottom: var(--space-20);">Contact Form Responses</h3>
+                <div class="data-table" id="contactsTable"></div>
+            </div>
+
+            <!-- Newsletter Tab -->
+            <div id="newsletterTab" class="tab-content">
+                <h3 style="margin-bottom: var(--space-20);">Newsletter Subscriptions</h3>
+                <div class="data-table" id="newsletterTable"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script>
+        // Data Storage
+        let projectsData = [
+            {
+                id: 1,
+                name: "E-Commerce Platform",
+                description: "A modern e-commerce solution with real-time inventory management, secure payment gateway integration, and AI-powered recommendations.",
+                image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=400&h=300&fit=crop"
+            },
+            {
+                id: 2,
+                name: "Healthcare Management System",
+                description: "Comprehensive healthcare platform with patient records, appointment scheduling, and telemedicine consultations with HIPAA-compliant security.",
+                image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=300&fit=crop"
+            },
+            {
+                id: 3,
+                name: "Financial Analytics Dashboard",
+                description: "Real-time financial data visualization with predictive analytics, portfolio tracking, and automated reporting for investment firms.",
+                image: "https://images.unsplash.com/photo-1633356713697-c8e4c96b5a8d?w=400&h=300&fit=crop"
+            },
+            {
+                id: 4,
+                name: "Social Media Management Tool",
+                description: "Unified platform for managing multiple social media accounts with scheduling, analytics, and team collaboration features.",
+                image: "https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=400&h=300&fit=crop"
+            },
+            {
+                id: 5,
+                name: "Learning Management System",
+                description: "Cloud-based educational platform with course creation, student tracking, live classes, and interactive learning modules.",
+                image: "https://images.unsplash.com/photo-1516321318423-f06f70d504f0?w=400&h=300&fit=crop"
+            },
+            {
+                id: 6,
+                name: "Real Estate Portal",
+                description: "Advanced property listing platform with virtual tours, 3D visualizations, price predictions, and seamless transaction management.",
+                image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=300&fit=crop"
+            },
+            {
+                id: 7,
+                name: "Restaurant Management System",
+                description: "Complete restaurant solution with online ordering, inventory management, staff scheduling, and customer loyalty programs.",
+                image: "https://images.unsplash.com/photo-1555939594-58d7cb561d1b?w=400&h=300&fit=crop"
+            },
+            {
+                id: 8,
+                name: "Travel Booking Platform",
+                description: "End-to-end travel solution offering flights, hotels, activities, and itinerary planning with intelligent recommendations.",
+                image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&h=300&fit=crop"
+            },
+            {
+                id: 9,
+                name: "HR Management Suite",
+                description: "Integrated human resources platform for recruitment, payroll, performance management, and employee engagement.",
+                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop"
+            },
+            {
+                id: 10,
+                name: "Fitness & Wellness App",
+                description: "Comprehensive fitness application with personalized workout plans, nutrition tracking, progress monitoring, and community features.",
+                image: "https://images.unsplash.com/photo-1517836357463-d25ddfcbf042?w=400&h=300&fit=crop"
+            }
+        ];
+
+        let clientsData = [
+            {
+                id: 1,
+                name: "Sarah Johnson",
+                designation: "CEO, TechVision Inc",
+                description: "Working with this team has been transformative for our business. Their attention to detail and innovative solutions exceeded our expectations. Highly recommended!",
+                image: "https://i.pravatar.cc/150?img=1"
+            },
+            {
+                id: 2,
+                name: "Michael Chen",
+                designation: "CTO, DataFlow Systems",
+                description: "Exceptional service and outstanding results. The team delivered a robust solution that scaled perfectly with our growing needs. True professionals!",
+                image: "https://i.pravatar.cc/150?img=13"
+            },
+            {
+                id: 3,
+                name: "Emma Rodriguez",
+                designation: "Product Manager, CloudNine",
+                description: "Their expertise in full-stack development is unmatched. They transformed our vision into reality with elegant code and beautiful design.",
+                image: "https://i.pravatar.cc/150?img=5"
+            },
+            {
+                id: 4,
+                name: "David Thompson",
+                designation: "Founder, NextGen Ventures",
+                description: "Outstanding quality of work and incredible support throughout the project. They understood our vision and delivered beyond expectations.",
+                image: "https://i.pravatar.cc/150?img=9"
+            },
+            {
+                id: 5,
+                name: "Priya Patel",
+                designation: "Director, Global Tech Solutions",
+                description: "The team's technical expertise combined with excellent communication made our project a huge success. Truly impressive work!",
+                image: "https://i.pravatar.cc/150?img=22"
+            },
+            {
+                id: 6,
+                name: "James Wilson",
+                designation: "VP Operations, InnovateCorp",
+                description: "Professional, reliable, and innovative. They turned our complex requirements into a seamless, scalable platform. Five stars!",
+                image: "https://i.pravatar.cc/150?img=33"
+            },
+            {
+                id: 7,
+                name: "Lisa Anderson",
+                designation: "CEO, Digital Ventures",
+                description: "Fantastic collaboration and impeccable execution. The final product exceeded our initial expectations and has transformed our business operations.",
+                image: "https://i.pravatar.cc/150?img=47"
+            },
+            {
+                id: 8,
+                name: "Robert Martinez",
+                designation: "CIO, Enterprise Solutions Inc",
+                description: "Exceptional team with deep technical knowledge and outstanding project management. They delivered on time and within budget.",
+                image: "https://i.pravatar.cc/150?img=55"
+            },
+            {
+                id: 9,
+                name: "Jennifer Lee",
+                designation: "Founder, StartupHub",
+                description: "Their ability to understand our business needs and translate them into technical solutions was remarkable. Highly professional team!",
+                image: "https://i.pravatar.cc/150?img=64"
+            },
+            {
+                id: 10,
+                name: "Marcus Johnson",
+                designation: "COO, Innovate Global",
+                description: "Working with them was a game-changer for our organization. Great communication, excellent results, and outstanding support post-launch.",
+                image: "https://i.pravatar.cc/150?img=71"
+            }
+        ];
+
+        let contactFormData = [];
+        let newsletterData = [];
+        let idCounter = 11;
+
+        // Navigation Functions
+        function showAdmin() {
+            document.getElementById('landingPage').classList.add('hidden');
+            document.getElementById('adminPanel').classList.remove('hidden');
+            renderAdminTables();
+        }
+
+        function showLanding() {
+            document.getElementById('adminPanel').classList.add('hidden');
+            document.getElementById('landingPage').classList.remove('hidden');
+        }
+
+        function showTab(tabName) {
+            // Update active tab
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Update active content
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.getElementById(tabName + 'Tab').classList.add('active');
+
+            renderAdminTables();
+        }
+
+        // Toast Notification
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `toast ${type} show`;
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Carousel Scroll Function
+        function scrollCarousel(carouselId, direction) {
+            const carousel = document.getElementById(carouselId);
+            const scrollAmount = 340; // Card width (320px) + gap (20px)
+            carousel.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+
+        // Render Landing Page
+        function renderProjects() {
+            const carousel = document.getElementById('projectsCarousel');
+            carousel.innerHTML = projectsData.map(project => `
+                <div class="carousel-item project-card">
+                    <img src="${project.image}" alt="${project.name}" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">${project.name}</h3>
+                        <p class="project-description">${project.description}</p>
+                        <button class="btn btn-secondary" style="margin-top: auto;">Read More</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderClients() {
+            const carousel = document.getElementById('clientsCarousel');
+            carousel.innerHTML = clientsData.map(client => `
+                <div class="carousel-item client-card">
+                    <div>
+                        <p class="client-description">${client.description}</p>
+                    </div>
+                    <div>
+                        <img src="${client.image}" alt="${client.name}" class="client-image">
+                        <div class="client-name">${client.name}</div>
+                        <div class="client-designation">${client.designation}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Form Validations
+        function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function validatePhone(phone) {
+            return /^[0-9]{10}$/.test(phone.replace(/\D/g, ''));
+        }
+
+        // Contact Form
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const data = {
+                id: Date.now(),
+                name: formData.get('name'),
+                email: formData.get('email'),
+                mobile: formData.get('mobile'),
+                city: formData.get('city')
+            };
+
+            // Validate
+            let valid = true;
+            document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+            document.querySelectorAll('.form-control').forEach(el => el.classList.remove('error'));
+
+            if (!data.name.trim()) {
+                document.getElementById('nameError').textContent = 'Name is required';
+                document.querySelector('[name="name"]').classList.add('error');
+                valid = false;
+            }
+
+            if (!validateEmail(data.email)) {
+                document.getElementById('emailError').textContent = 'Valid email is required';
+                document.querySelector('[name="email"]').classList.add('error');
+                valid = false;
+            }
+
+            if (!validatePhone(data.mobile)) {
+                document.getElementById('mobileError').textContent = 'Valid 10-digit phone number required';
+                document.querySelector('[name="mobile"]').classList.add('error');
+                valid = false;
+            }
+
+            if (!data.city.trim()) {
+                document.getElementById('cityError').textContent = 'City is required';
+                document.querySelector('[name="city"]').classList.add('error');
+                valid = false;
+            }
+
+            if (valid) {
+                contactFormData.push(data);
+                e.target.reset();
+                showToast('Thank you! Your message has been sent successfully.');
+            }
+        });
+
+        // Newsletter Form
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const email = formData.get('email');
+
+            if (!validateEmail(email)) {
+                showToast('Please enter a valid email address', 'error');
+                return;
+            }
+
+            newsletterData.push({
+                id: Date.now(),
+                email: email,
+                date: new Date().toLocaleDateString()
+            });
+
+            e.target.reset();
+            showToast('Successfully subscribed to newsletter!');
+        });
+
+        // Image Cropping Variables
+        let projectImageObj = null;
+        let projectCropState = {
+            image: null,
+            scale: 1,
+            rotation: 0,
+            cropX: 0,
+            cropY: 0,
+            cropWidth: 0,
+            cropHeight: 0,
+            isDragging: false,
+            dragStartX: 0,
+            dragStartY: 0,
+            aspectRatio: 'free'
+        };
+
+        let clientImageObj = null;
+        let clientCropState = {
+            image: null,
+            scale: 1,
+            rotation: 0,
+            cropX: 0,
+            cropY: 0,
+            cropWidth: 0,
+            cropHeight: 0,
+            isDragging: false,
+            dragStartX: 0,
+            dragStartY: 0,
+            aspectRatio: 'free'
+        };
+
+        // Project Image Cropping Functions
+        function loadProjectImage() {
+            const url = document.getElementById('projectImageUrl').value;
+            if (!url) {
+                showToast('Please enter an image URL', 'error');
+                return;
+            }
+
+            const img = new Image();
+            img.crossOrigin = 'anonymous';
+            img.onload = function() {
+                projectImageObj = img;
+                projectCropState.image = img;
+                projectCropState.scale = 1;
+                projectCropState.rotation = 0;
+                
+                document.getElementById('projectCropArea').style.display = 'block';
+                document.getElementById('projectCroppedPreview').style.display = 'none';
+                
+                drawProjectImage();
+                initProjectCropBox();
+            };
+            img.onerror = function() {
+                showToast('Failed to load image. Please check the URL.', 'error');
+            };
+            img.src = url;
+        }
+
+        function drawProjectImage() {
+            if (!projectImageObj) return;
+            
+            const canvas = document.getElementById('projectCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            const maxWidth = 700;
+            const maxHeight = 500;
+            let width = projectImageObj.width * projectCropState.scale;
+            let height = projectImageObj.height * projectCropState.scale;
+            
+            if (width > maxWidth) {
+                height = (height * maxWidth) / width;
+                width = maxWidth;
+            }
+            if (height > maxHeight) {
+                width = (width * maxHeight) / height;
+                height = maxHeight;
+            }
+            
+            canvas.width = width;
+            canvas.height = height;
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.save();
+            
+            if (projectCropState.rotation !== 0) {
+                ctx.translate(canvas.width / 2, canvas.height / 2);
+                ctx.rotate((projectCropState.rotation * Math.PI) / 180);
+                ctx.translate(-canvas.width / 2, -canvas.height / 2);
+            }
+            
+            ctx.drawImage(projectImageObj, 0, 0, width, height);
+            ctx.restore();
+            
+            drawProjectCropBox();
+        }
+
+        function initProjectCropBox() {
+            const canvas = document.getElementById('projectCanvas');
+            projectCropState.cropWidth = Math.min(300, canvas.width * 0.7);
+            projectCropState.cropHeight = Math.min(200, canvas.height * 0.7);
+            projectCropState.cropX = (canvas.width - projectCropState.cropWidth) / 2;
+            projectCropState.cropY = (canvas.height - projectCropState.cropHeight) / 2;
+            
+            drawProjectCropBox();
+            setupProjectCanvasEvents();
+        }
+
+        function drawProjectCropBox() {
+            const canvas = document.getElementById('projectCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            ctx.strokeStyle = '#3B82F6';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([5, 5]);
+            ctx.strokeRect(
+                projectCropState.cropX,
+                projectCropState.cropY,
+                projectCropState.cropWidth,
+                projectCropState.cropHeight
+            );
+            ctx.setLineDash([]);
+            
+            // Draw handles
+            const handles = [
+                {x: projectCropState.cropX, y: projectCropState.cropY},
+                {x: projectCropState.cropX + projectCropState.cropWidth, y: projectCropState.cropY},
+                {x: projectCropState.cropX, y: projectCropState.cropY + projectCropState.cropHeight},
+                {x: projectCropState.cropX + projectCropState.cropWidth, y: projectCropState.cropY + projectCropState.cropHeight}
+            ];
+            
+            ctx.fillStyle = '#3B82F6';
+            handles.forEach(handle => {
+                ctx.fillRect(handle.x - 5, handle.y - 5, 10, 10);
+            });
+            
+            // Update dimensions display
+            document.getElementById('projectCropDimensions').textContent = 
+                `Crop area: ${Math.round(projectCropState.cropWidth)} × ${Math.round(projectCropState.cropHeight)} px`;
+        }
+
+        function setupProjectCanvasEvents() {
+            const canvas = document.getElementById('projectCanvas');
+            
+            canvas.onmousedown = function(e) {
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                if (x >= projectCropState.cropX && x <= projectCropState.cropX + projectCropState.cropWidth &&
+                    y >= projectCropState.cropY && y <= projectCropState.cropY + projectCropState.cropHeight) {
+                    projectCropState.isDragging = true;
+                    projectCropState.dragStartX = x - projectCropState.cropX;
+                    projectCropState.dragStartY = y - projectCropState.cropY;
+                }
+            };
+            
+            canvas.onmousemove = function(e) {
+                if (!projectCropState.isDragging) return;
+                
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                projectCropState.cropX = Math.max(0, Math.min(x - projectCropState.dragStartX, canvas.width - projectCropState.cropWidth));
+                projectCropState.cropY = Math.max(0, Math.min(y - projectCropState.dragStartY, canvas.height - projectCropState.cropHeight));
+                
+                drawProjectImage();
+            };
+            
+            canvas.onmouseup = function() {
+                projectCropState.isDragging = false;
+            };
+            
+            canvas.onmouseleave = function() {
+                projectCropState.isDragging = false;
+            };
+        }
+
+        function changeProjectAspectRatio() {
+            const ratio = document.getElementById('projectAspectRatio').value;
+            projectCropState.aspectRatio = ratio;
+            
+            if (ratio !== 'free') {
+                const aspectRatio = parseFloat(ratio);
+                projectCropState.cropHeight = projectCropState.cropWidth / aspectRatio;
+                
+                const canvas = document.getElementById('projectCanvas');
+                if (projectCropState.cropY + projectCropState.cropHeight > canvas.height) {
+                    projectCropState.cropHeight = canvas.height - projectCropState.cropY;
+                    projectCropState.cropWidth = projectCropState.cropHeight * aspectRatio;
+                }
+                
+                drawProjectImage();
+            }
+        }
+
+        function zoomProjectImage(factor) {
+            projectCropState.scale *= factor;
+            projectCropState.scale = Math.max(0.5, Math.min(3, projectCropState.scale));
+            drawProjectImage();
+        }
+
+        function rotateProjectImage() {
+            projectCropState.rotation = (projectCropState.rotation + 90) % 360;
+            drawProjectImage();
+        }
+
+        function cropProjectImage() {
+            if (!projectImageObj) return;
+            
+            const canvas = document.getElementById('projectCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            const croppedCanvas = document.createElement('canvas');
+            croppedCanvas.width = projectCropState.cropWidth;
+            croppedCanvas.height = projectCropState.cropHeight;
+            const croppedCtx = croppedCanvas.getContext('2d');
+            
+            croppedCtx.drawImage(
+                canvas,
+                projectCropState.cropX,
+                projectCropState.cropY,
+                projectCropState.cropWidth,
+                projectCropState.cropHeight,
+                0,
+                0,
+                projectCropState.cropWidth,
+                projectCropState.cropHeight
+            );
+            
+            const croppedDataUrl = croppedCanvas.toDataURL('image/jpeg', 0.9);
+            document.getElementById('projectCroppedData').value = croppedDataUrl;
+            document.getElementById('projectCroppedImg').src = croppedDataUrl;
+            
+            document.getElementById('projectCropArea').style.display = 'none';
+            document.getElementById('projectCroppedPreview').style.display = 'block';
+            
+            showToast('Image cropped successfully!');
+        }
+
+        function cancelProjectCrop() {
+            document.getElementById('projectCropArea').style.display = 'none';
+            document.getElementById('projectCroppedPreview').style.display = 'none';
+            document.getElementById('projectCroppedData').value = '';
+            projectImageObj = null;
+        }
+
+        // Client Image Cropping Functions
+        function loadClientImage() {
+            const url = document.getElementById('clientImageUrl').value;
+            if (!url) {
+                showToast('Please enter an image URL', 'error');
+                return;
+            }
+
+            const img = new Image();
+            img.crossOrigin = 'anonymous';
+            img.onload = function() {
+                clientImageObj = img;
+                clientCropState.image = img;
+                clientCropState.scale = 1;
+                clientCropState.rotation = 0;
+                
+                document.getElementById('clientCropArea').style.display = 'block';
+                document.getElementById('clientCroppedPreview').style.display = 'none';
+                
+                drawClientImage();
+                initClientCropBox();
+            };
+            img.onerror = function() {
+                showToast('Failed to load image. Please check the URL.', 'error');
+            };
+            img.src = url;
+        }
+
+        function drawClientImage() {
+            if (!clientImageObj) return;
+            
+            const canvas = document.getElementById('clientCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            const maxWidth = 700;
+            const maxHeight = 500;
+            let width = clientImageObj.width * clientCropState.scale;
+            let height = clientImageObj.height * clientCropState.scale;
+            
+            if (width > maxWidth) {
+                height = (height * maxWidth) / width;
+                width = maxWidth;
+            }
+            if (height > maxHeight) {
+                width = (width * maxHeight) / height;
+                height = maxHeight;
+            }
+            
+            canvas.width = width;
+            canvas.height = height;
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.save();
+            
+            if (clientCropState.rotation !== 0) {
+                ctx.translate(canvas.width / 2, canvas.height / 2);
+                ctx.rotate((clientCropState.rotation * Math.PI) / 180);
+                ctx.translate(-canvas.width / 2, -canvas.height / 2);
+            }
+            
+            ctx.drawImage(clientImageObj, 0, 0, width, height);
+            ctx.restore();
+            
+            drawClientCropBox();
+        }
+
+        function initClientCropBox() {
+            const canvas = document.getElementById('clientCanvas');
+            const size = Math.min(200, canvas.width * 0.6, canvas.height * 0.6);
+            clientCropState.cropWidth = size;
+            clientCropState.cropHeight = size;
+            clientCropState.cropX = (canvas.width - size) / 2;
+            clientCropState.cropY = (canvas.height - size) / 2;
+            
+            drawClientCropBox();
+            setupClientCanvasEvents();
+        }
+
+        function drawClientCropBox() {
+            const canvas = document.getElementById('clientCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            ctx.strokeStyle = '#3B82F6';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([5, 5]);
+            ctx.strokeRect(
+                clientCropState.cropX,
+                clientCropState.cropY,
+                clientCropState.cropWidth,
+                clientCropState.cropHeight
+            );
+            ctx.setLineDash([]);
+            
+            // Draw handles
+            const handles = [
+                {x: clientCropState.cropX, y: clientCropState.cropY},
+                {x: clientCropState.cropX + clientCropState.cropWidth, y: clientCropState.cropY},
+                {x: clientCropState.cropX, y: clientCropState.cropY + clientCropState.cropHeight},
+                {x: clientCropState.cropX + clientCropState.cropWidth, y: clientCropState.cropY + clientCropState.cropHeight}
+            ];
+            
+            ctx.fillStyle = '#3B82F6';
+            handles.forEach(handle => {
+                ctx.fillRect(handle.x - 5, handle.y - 5, 10, 10);
+            });
+            
+            document.getElementById('clientCropDimensions').textContent = 
+                `Crop area: ${Math.round(clientCropState.cropWidth)} × ${Math.round(clientCropState.cropHeight)} px`;
+        }
+
+        function setupClientCanvasEvents() {
+            const canvas = document.getElementById('clientCanvas');
+            
+            canvas.onmousedown = function(e) {
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                if (x >= clientCropState.cropX && x <= clientCropState.cropX + clientCropState.cropWidth &&
+                    y >= clientCropState.cropY && y <= clientCropState.cropY + clientCropState.cropHeight) {
+                    clientCropState.isDragging = true;
+                    clientCropState.dragStartX = x - clientCropState.cropX;
+                    clientCropState.dragStartY = y - clientCropState.cropY;
+                }
+            };
+            
+            canvas.onmousemove = function(e) {
+                if (!clientCropState.isDragging) return;
+                
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                clientCropState.cropX = Math.max(0, Math.min(x - clientCropState.dragStartX, canvas.width - clientCropState.cropWidth));
+                clientCropState.cropY = Math.max(0, Math.min(y - clientCropState.dragStartY, canvas.height - clientCropState.cropHeight));
+                
+                drawClientImage();
+            };
+            
+            canvas.onmouseup = function() {
+                clientCropState.isDragging = false;
+            };
+            
+            canvas.onmouseleave = function() {
+                clientCropState.isDragging = false;
+            };
+        }
+
+        function changeClientAspectRatio() {
+            const ratio = document.getElementById('clientAspectRatio').value;
+            clientCropState.aspectRatio = ratio;
+            
+            if (ratio !== 'free') {
+                const aspectRatio = parseFloat(ratio);
+                clientCropState.cropHeight = clientCropState.cropWidth / aspectRatio;
+                
+                const canvas = document.getElementById('clientCanvas');
+                if (clientCropState.cropY + clientCropState.cropHeight > canvas.height) {
+                    clientCropState.cropHeight = canvas.height - clientCropState.cropY;
+                    clientCropState.cropWidth = clientCropState.cropHeight * aspectRatio;
+                }
+                
+                drawClientImage();
+            }
+        }
+
+        function zoomClientImage(factor) {
+            clientCropState.scale *= factor;
+            clientCropState.scale = Math.max(0.5, Math.min(3, clientCropState.scale));
+            drawClientImage();
+        }
+
+        function rotateClientImage() {
+            clientCropState.rotation = (clientCropState.rotation + 90) % 360;
+            drawClientImage();
+        }
+
+        function cropClientImage() {
+            if (!clientImageObj) return;
+            
+            const canvas = document.getElementById('clientCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            const croppedCanvas = document.createElement('canvas');
+            croppedCanvas.width = clientCropState.cropWidth;
+            croppedCanvas.height = clientCropState.cropHeight;
+            const croppedCtx = croppedCanvas.getContext('2d');
+            
+            croppedCtx.drawImage(
+                canvas,
+                clientCropState.cropX,
+                clientCropState.cropY,
+                clientCropState.cropWidth,
+                clientCropState.cropHeight,
+                0,
+                0,
+                clientCropState.cropWidth,
+                clientCropState.cropHeight
+            );
+            
+            const croppedDataUrl = croppedCanvas.toDataURL('image/jpeg', 0.9);
+            document.getElementById('clientCroppedData').value = croppedDataUrl;
+            document.getElementById('clientCroppedImg').src = croppedDataUrl;
+            
+            document.getElementById('clientCropArea').style.display = 'none';
+            document.getElementById('clientCroppedPreview').style.display = 'block';
+            
+            showToast('Image cropped successfully!');
+        }
+
+        function cancelClientCrop() {
+            document.getElementById('clientCropArea').style.display = 'none';
+            document.getElementById('clientCroppedPreview').style.display = 'none';
+            document.getElementById('clientCroppedData').value = '';
+            clientImageObj = null;
+        }
+
+        // Admin Forms
+        document.getElementById('addProjectForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const imageData = document.getElementById('projectCroppedData').value;
+            
+            if (!imageData) {
+                showToast('Please load and crop an image first', 'error');
+                return;
+            }
+            
+            const project = {
+                id: idCounter++,
+                name: formData.get('name'),
+                description: formData.get('description'),
+                image: imageData
+            };
+
+            projectsData.push(project);
+            e.target.reset();
+            document.getElementById('projectCropArea').style.display = 'none';
+            document.getElementById('projectCroppedPreview').style.display = 'none';
+            document.getElementById('projectCroppedData').value = '';
+            renderProjects();
+            renderAdminTables();
+            showToast('Project added successfully!');
+        });
+
+        document.getElementById('addClientForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const imageData = document.getElementById('clientCroppedData').value;
+            
+            if (!imageData) {
+                showToast('Please load and crop an image first', 'error');
+                return;
+            }
+            
+            const client = {
+                id: idCounter++,
+                name: formData.get('name'),
+                designation: formData.get('designation'),
+                description: formData.get('description'),
+                image: imageData
+            };
+
+            clientsData.push(client);
+            e.target.reset();
+            document.getElementById('clientCropArea').style.display = 'none';
+            document.getElementById('clientCroppedPreview').style.display = 'none';
+            document.getElementById('clientCroppedData').value = '';
+            renderClients();
+            renderAdminTables();
+            showToast('Client added successfully!');
+        });
+
+        // Delete Functions
+        function deleteProject(id) {
+            if (confirm('Are you sure you want to delete this project?')) {
+                projectsData = projectsData.filter(p => p.id !== id);
+                renderProjects();
+                renderAdminTables();
+                showToast('Project deleted successfully!');
+            }
+        }
+
+        function deleteClient(id) {
+            if (confirm('Are you sure you want to delete this client?')) {
+                clientsData = clientsData.filter(c => c.id !== id);
+                renderClients();
+                renderAdminTables();
+                showToast('Client deleted successfully!');
+            }
+        }
+
+        function deleteContact(id) {
+            if (confirm('Are you sure you want to delete this contact?')) {
+                contactFormData = contactFormData.filter(c => c.id !== id);
+                renderAdminTables();
+                showToast('Contact deleted successfully!');
+            }
+        }
+
+        function deleteNewsletter(id) {
+            if (confirm('Are you sure you want to delete this subscription?')) {
+                newsletterData = newsletterData.filter(n => n.id !== id);
+                renderAdminTables();
+                showToast('Subscription deleted successfully!');
+            }
+        }
+
+        // Render Admin Tables
+        function renderAdminTables() {
+            // Projects Table
+            const projectsTable = document.getElementById('projectsTable');
+            if (projectsData.length === 0) {
+                projectsTable.innerHTML = '<div class="empty-state">No projects added yet</div>';
+            } else {
+                projectsTable.innerHTML = `
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${projectsData.map(project => `
+                                <tr>
+                                    <td><img src="${project.image}" alt="${project.name}" style="width: 60px; height: 60px; object-fit: cover; border-radius: var(--radius-sm);"></td>
+                                    <td>${project.name}</td>
+                                    <td>${project.description.substring(0, 100)}...</td>
+                                    <td><button class="btn-delete" onclick="deleteProject(${project.id})">Delete</button></td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            }
+
+            // Clients Table
+            const clientsTable = document.getElementById('clientsTable');
+            if (clientsData.length === 0) {
+                clientsTable.innerHTML = '<div class="empty-state">No clients added yet</div>';
+            } else {
+                clientsTable.innerHTML = `
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Designation</th>
+                                <th>Testimonial</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${clientsData.map(client => `
+                                <tr>
+                                    <td><img src="${client.image}" alt="${client.name}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;"></td>
+                                    <td>${client.name}</td>
+                                    <td>${client.designation}</td>
+                                    <td>${client.description.substring(0, 80)}...</td>
+                                    <td><button class="btn-delete" onclick="deleteClient(${client.id})">Delete</button></td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            }
+
+            // Contacts Table
+            const contactsTable = document.getElementById('contactsTable');
+            if (contactFormData.length === 0) {
+                contactsTable.innerHTML = '<div class="empty-state">No contact form submissions yet</div>';
+            } else {
+                contactsTable.innerHTML = `
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th>Mobile Number</th>
+                                <th>City</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${contactFormData.map(contact => `
+                                <tr>
+                                    <td>${contact.name}</td>
+                                    <td>${contact.email}</td>
+                                    <td>${contact.mobile}</td>
+                                    <td>${contact.city}</td>
+                                    <td><button class="btn-delete" onclick="deleteContact(${contact.id})">Delete</button></td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            }
+
+            // Newsletter Table
+            const newsletterTable = document.getElementById('newsletterTable');
+            if (newsletterData.length === 0) {
+                newsletterTable.innerHTML = '<div class="empty-state">No newsletter subscriptions yet</div>';
+            } else {
+                newsletterTable.innerHTML = `
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Email Address</th>
+                                <th>Subscription Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${newsletterData.map(sub => `
+                                <tr>
+                                    <td>${sub.email}</td>
+                                    <td>${sub.date}</td>
+                                    <td><button class="btn-delete" onclick="deleteNewsletter(${sub.id})">Delete</button></td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            }
+        }
+
+
+
+        // Initial Render
+        renderProjects();
+        renderClients();
+    </script>
+</body>
+</html>
